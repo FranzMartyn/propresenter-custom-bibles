@@ -5,3 +5,4 @@ regex
 requests
 pyinstaller
 prompt_toolkit
+flask
