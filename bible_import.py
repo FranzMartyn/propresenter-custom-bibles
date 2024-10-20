@@ -447,7 +447,7 @@ def overwrite_free_bible(bible_folder):
         with open(bible_data_propref_loc, "w", encoding='utf-8') as bibledata_handle:
             bibledata_handle.write(bibledata_contents_new)
 
-if __name__ == '__main__':
+def main():
     os.makedirs(download_folder, exist_ok=True)
 
     click.echo("Which language would you want to download?")
@@ -502,3 +502,9 @@ if __name__ == '__main__':
 
     print("Done! Please restart ProPresenter and check if the bible is correctly installed.")
     input("Press enter to close...")
+
+if __name__ == "__main__"():
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Exiting Application...")
