@@ -1,5 +1,7 @@
 """Functions that may not be appropiate to put in server.py"""
 
+import os
+
 import requests
 
 def get_language_options() -> list[str]:
@@ -19,3 +21,15 @@ def get_language_options() -> list[str]:
 
     prompt_options = {gen_name(x): x["iso_639_3"] for x in lang_versions }
     return prompt_options.values()
+
+
+# Partially copied from bible_import.move_rvbible_propresenter_folder
+def get_sideload_folder():
+    if system_str == 'Windows':
+        program_data = os.getenv('PROGRAMDATA')
+        propresenter_bible_location = os.path.join(program_data,
+                                                   'RenewedVision\ProPresenter\Bibles\sideload')
+        os.makedirs(propresenter_bible_location, exist_ok=True)
+    elif system_str == 'Darwin':
+        propresenter_bible_location = '/Library/Application Support/RenewedVision/RVBibles/v2/'
+    return propresenter_bible_location
